@@ -1,10 +1,10 @@
 // Location where profile info will appear
 const overview = document.querySelector(".overview");
-
 // GitHub username
 const username = "nvsmith";
+const repoList = document.querySelector(".repo-list");
 
-// Begin communication with the API or hosted file.
+// GitHub API: user
 const gitUserInfo = async function () {
     const userInfo = await fetch(`https://api.github.com/users/${username}`);
     // Parse response as JSON or text.
@@ -17,9 +17,9 @@ const gitUserInfo = async function () {
 gitUserInfo();
 
 const displayUserInfo = function (data) {
-    const userInfo = document.createElement("div");
-    userInfo.classList.add("user-info");
-    userInfo.innerHTML = `
+    const div = document.createElement("div");
+    div.classList.add("user-info");
+    div.innerHTML = `
     <figure>
       <img alt="user avatar" src=${data.avatar_url} />
     </figure>
@@ -29,7 +29,27 @@ const displayUserInfo = function (data) {
       <p><strong>Location:</strong> ${data.location}</p>
       <p><strong>Number of public repos:</strong> ${data.public_repos}</p>
     </div>
-    `;
+  `;
+    overview.append(div);
+    gitRepos();
+};
 
-    overview.append(userInfo);
+// GitHub API: repos
+const gitRepos = async function () {
+    const fetchRepos = await fetch(
+        `https://api.github.com/users/${username}/repos?sort=updated&per_page=100`
+    );
+    const repoData = await fetchRepos.json();
+
+    // Call functions dependent on fetched data below this line.
+    displayRepos(repoData);
+};
+
+const displayRepos = function (repos) {
+    for (const repo of repos) {
+        const repoItem = document.createElement("li");
+        repoItem.classList.add("repo");
+        repoItem.innerHTML = `<h3>${repo.name}</h3>`;
+        repoList.append(repoItem);
+    }
 };

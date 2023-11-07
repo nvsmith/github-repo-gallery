@@ -85,6 +85,7 @@ All you need is a browser (to view/interact) and a text editor (to modify).
 -   `script.js`: functionality.
 -   [GitHub REST API documentation](https://docs.github.com/en/rest?apiVersion=2022-11-28)
     -   [Users](https://docs.github.com/en/rest/users?apiVersion=2022-11-28#get-a-user)
+    -   [List repositories for a user](https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#list-repositories-for-a-user)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
