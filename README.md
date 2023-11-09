@@ -35,9 +35,10 @@ This is a repo gallery built with JavaScript that implements:
 -   Async and callback functions.
 -   Fetching data from a hosted file.
 -   Parsing data as JSON.
-<!-- -   for...of loops with conditionals.
+-   Click event handlers with the `matches` method to target specific elements.
 -   Click event handlers with conditional statements.
 -   Creating and appending HTML elements.
+<!-- -   for...of loops with conditionals.
 -   Adding and removing CSS classes.
 -   RegEx validation. -->
 
@@ -84,7 +85,7 @@ All you need is a browser (to view/interact) and a text editor (to modify).
 -   `styles.css`: design and aesthetics.
 -   `script.js`: functionality.
 -   [GitHub REST API documentation](https://docs.github.com/en/rest?apiVersion=2022-11-28)
-    -   [Users](https://docs.github.com/en/rest/users?apiVersion=2022-11-28#get-a-user)
+    -   [Get a user](https://docs.github.com/en/free-pro-team@latest/rest/users/users?apiVersion=2022-11-28#get-a-user)
     -   [List repositories for a user](https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#list-repositories-for-a-user)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
