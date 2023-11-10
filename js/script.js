@@ -3,6 +3,8 @@ const username = "nvsmith"; // GitHub username
 const repoList = document.querySelector(".repo-list");
 const allReposContainer = document.querySelector(".repos");
 const repoData = document.querySelector(".repo-data"); // HTML scope
+const viewReposButton = document.querySelector(".view-repos"); // Button
+const filterInput = document.querySelector(".filter-repos"); // Search box
 
 // GitHub API: fetch user info
 const gitUserInfo = async function () {
@@ -53,6 +55,7 @@ const displayRepos = function (repos) {
         repoItem.innerHTML = `<h3>${repo.name}</h3>`;
         repoList.append(repoItem);
     }
+    filterInput.classList.remove("hide");
 };
 
 repoList.addEventListener("click", function (e) {
@@ -89,13 +92,36 @@ const displayRepoInfo = function (repoInfo, languages) {
     allReposContainer.classList.add("hide");
     const div = document.createElement("div");
     div.innerHTML = `
-      <h3>Name: ${repoInfo.name}</h3>
-      <p>Description: ${repoInfo.description}</p>
-      <p>Default Branch: ${repoInfo.default_branch}</p>
-      <p>Languages: ${languages.join(", ")}</p>
-      <a class="visit" href="${
-          repoInfo.html_url
-      }" target="_blank" rel="noreferrer noopener">View Repo on GitHub!</a>
-    `;
+        <h3>Name: ${repoInfo.name}</h3>
+        <p>Description: ${repoInfo.description}</p>
+        <p>Default Branch: ${repoInfo.default_branch}</p>
+        <p>Languages: ${languages.join(", ")}</p>
+        <a class="visit" href="${
+            repoInfo.html_url
+        }" target="_blank" rel="noreferrer noopener">View Repo on GitHub!</a>
+        `;
     repoData.append(div);
+    viewReposButton.classList.remove("hide");
 };
+
+viewReposButton.addEventListener("click", function () {
+    allReposContainer.classList.remove("hide");
+    repoData.classList.add("hide");
+    viewReposButton.classList.add("hide");
+});
+
+// Dynamic search
+filterInput.addEventListener("input", function (e) {
+    const searchText = e.target.value;
+    const repos = document.querySelectorAll(".repo");
+    const searchLowerText = searchText.toLowerCase();
+
+    for (const repo of repos) {
+        const repoLowerText = repo.innerText.toLowerCase();
+        if (repoLowerText.includes(searchLowerText)) {
+            repo.classList.remove("hide");
+        } else {
+            repo.classList.add("hide");
+        }
+    }
+});

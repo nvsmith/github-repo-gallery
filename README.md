@@ -30,19 +30,19 @@
 
 ## About The Project
 
-This is a repo gallery built with JavaScript that implements:
+This is a project gallery built with JavaScript that implements:
 
 -   Async and callback functions.
--   Fetching data from a hosted file.
+-   Fetching data with an API.
 -   Parsing data as JSON.
--   Click event handlers with the `matches` method to target specific elements.
--   Click event handlers with conditional statements.
+-   `click` event listeners with the `matches` method to target specific elements within a group.
 -   Creating and appending HTML elements.
-<!-- -   for...of loops with conditionals.
 -   Adding and removing CSS classes.
--   RegEx validation. -->
+-   `for...of` loops.
+-   `for...in` loops.
+-   Dynamic search using `input` event listeners.
 
-Pull data from your GitHub portfolio onto your web page using the GitHub API. Show off your work as gallery of projects.
+Connect with the GitHub API to fetch information about your repositories. Display your work as a gallery of projects. Search included!
 
 <div align="center">
 
